@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
+import { UserButton } from "@clerk/nextjs";
 
 export default async function LandingPage() {
   const { userId } = await auth();
@@ -15,14 +16,17 @@ export default async function LandingPage() {
               cuentaclara
             </span>
           </div>
-          <div>
+          <div className="flex items-center gap-6">
             {userId ? (
-              <Link
-                href="/dashboard"
-                className="border border-muted-fg/30 px-5 py-2 text-xs text-primary-fg hover:border-accent hover:text-accent transition-colors"
-              >
-                dashboard
-              </Link>
+              <>
+                <Link
+                  href="/dashboard"
+                  className="border border-muted-fg/30 px-5 py-2 text-xs text-primary-fg hover:border-accent hover:text-accent transition-colors"
+                >
+                  dashboard
+                </Link>
+                <UserButton appearance={{ elements: { avatarBox: "w-8 h-8" } }} />
+              </>
             ) : (
               <Link
                 href="/sign-in"
