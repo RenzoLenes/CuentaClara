@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { esES } from "@clerk/localizations";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const jetbrains = JetBrains_Mono({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <html lang="es" className={`${jetbrains.variable} h-full antialiased`}>
         <body className="min-h-full flex flex-col bg-background text-foreground font-mono">
           {children}
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
